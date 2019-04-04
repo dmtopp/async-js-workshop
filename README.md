@@ -1,3 +1,9 @@
-# JS Boilerplate
+# async-js-workshop
 
-This is a basic setup for js projects with jest and eslint.  To get started, clone the repo and start coding away in the `src` directory.
+1. Why async?
+2. Error-first callbacks
+3. Promises I
+4. Promises II
+
+
+this is tooo long 
