@@ -1,14 +1,12 @@
-const { doAsyncWork } = require('../api/errorFirstCallbacks')
+const { simulateAsync } = require('./helpers/asyncFunctions')
+const { handleError, handleSuccess } = require('./helpers/handleResults')
+// use these guys ^ to handle the async response
 
 const main = () => {
-  console.log('Clocking in, time to do some async work.')
-
-  // write an error-first callback for this function
-  // it should console.log the results of the function if successful
-  // it should console.log a friendly error message if an error occured
-  doAsyncWork()
-
-  console.log('Done!')
+  /* write an error-first callback for this function
+  if there is an error, pass it to handleError
+  otherwise, pass the results to handleSuccess */
+  simulateAsync()
 }
 
-export default main
+module.exports = main
