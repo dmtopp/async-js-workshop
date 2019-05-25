@@ -1,29 +1,22 @@
+const { doAsyncWork } = require('../helpers/asyncFunctions')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
-const { hackMainframePromise, getLaunchCodesPromise } = require('../helpers/asyncFunctions')
 
 /*
-  06 Multiple promises with async/await
-  - hackMainframe and getLaunchCodes still return promises
+  06 Intro to async/await
+  - doAsyncWork still returns a promise (no change from ex03!)
   - use async/await instead of .then()
-  - pass the results of hackMainframe into getLaunchCodes
   - if there is an error, pass it to handleError()
   - otherwise, pass the results to handleSuccess()
 */
 
-/* hackMainframePromise()
-  @returns {Promise}
-*/
-
-/* getLaunchCodesPromise()
-  @param {string} [credentials] - result from hackMainframe()
+/* doAsyncWork()
   @returns {Promise}
 */
 
 const main = async () => {
   try {
-    const credentials = await hackMainframePromise()
-    const sensitiveData = await getLaunchCodesPromise(credentials)
-    handleSuccess(sensitiveData)
+    const result = await doAsyncWork()
+    handleSuccess(result)
   } catch (e) {
     handleError(e)
   }

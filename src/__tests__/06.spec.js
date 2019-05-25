@@ -1,54 +1,29 @@
-const ex06 = require('../solutions/04')
+const ex06 = require('../06')
 const returnDataOrThrowError = require('../helpers/returnDataOrThrowError')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
-const { CREDENTIALS, LAUNCH_CODES } = require('../helpers/asyncFunctions')
 
 describe('ex06', () => {
-  it('should return a promise', () => {
-    const success = {
-      error: null,
-      data: { message: 'Success!' },
-    }
-    returnDataOrThrowError.mockReturnValueOnce(success)
-
-    const result = ex06()
-
-    expect(result).toBeInstanceOf(Promise)
-  })
-
-  it('handleError should be called if hackMainframe fails', async () => {
+  it('handleError should be called if there is an error', () => {
     const result = {
       error: { message: 'Oh no!' },
       data: null,
     }
     returnDataOrThrowError.mockReturnValueOnce(result)
 
-    await ex06()
-
-    expect(handleError).toHaveBeenCalledWith(result.error)
+    ex06().then(() => {
+      expect(handleError).toHaveBeenCalledWith(result.error)
+    })
   })
 
-  it('handleError should be called if getLaunchCodes fails', async () => {
+  it('handleSuccess should be called if there was no error', () => {
     const result = {
       error: null,
-      data: { credentials: 'are wrong!' },
+      data: { message: 'Success!' },
     }
     returnDataOrThrowError.mockReturnValueOnce(result)
 
-    await ex06()
-
-    expect(handleError).toHaveBeenCalledWith({ message: 'Incorrect credentials!' })
-  })
-
-  it('handleSuccess should be called with the launch codes', async () => {
-    const result = {
-      error: null,
-      data: CREDENTIALS,
-    }
-    returnDataOrThrowError.mockReturnValueOnce(result)
-
-    await ex06()
-
-    expect(handleSuccess).toHaveBeenCalledWith(LAUNCH_CODES)
+    ex06().then(() => {
+      expect(handleSuccess).toHaveBeenCalledWith(result.data)
+    })
   })
 })

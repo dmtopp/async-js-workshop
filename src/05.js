@@ -1,19 +1,24 @@
-const { doAsyncWork } = require('./helpers/asyncFunctions')
 const { handleError, handleSuccess } = require('./helpers/handleResults')
+const { hackMainframePromise, getLaunchCodesPromise } = require('./helpers/asyncFunctions')
 
 /*
-  05 Intro to async/await
-  - doAsyncWork still returns a promise (no change from ex03!)
-  - use async/await instead of .then()
+  05 Chaining promises
+  - hackMainframe and getLaunchCodes now both return promises
+  - use promise chaining to pass the results of hackMainframe to getLaunchCodes
   - if there is an error, pass it to handleError()
   - otherwise, pass the results to handleSuccess()
 */
 
-/* doAsyncWork()
+/* hackMainframePromise()
   @returns {Promise}
 */
 
-const main = async () => {
+/* getLaunchCodesPromise()
+  @param {string} [credentials] - result from hackMainframe()
+  @returns {Promise}
+*/
+
+const main = () => {
   // your code here
 }
 

@@ -1,4 +1,4 @@
-const ex01 = require('../solutions/01')
+const ex01 = require('../01')
 const returnDataOrThrowError = require('../helpers/returnDataOrThrowError')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
 

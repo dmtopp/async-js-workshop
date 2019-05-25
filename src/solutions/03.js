@@ -1,21 +1,26 @@
-const { doAsyncWork } = require('../helpers/asyncFunctions')
-const { handleError, handleSuccess } = require('../helpers/handleResults')
+const { simulateAsync } = require('../helpers/asyncFunctions')
 
 /*
-  03 Handling functions that return promises
-  - doAsyncWork now returns a promise instead of taking a callback
-  - use the .then and .catch methods to wait for your promise
-  - if there is an error, pass it to handleError()
-  - otherwise, pass the results to handleSuccess()
+  03 Wrapping callbacks in a promise
+  - simulateAsync still takes an error-first callback
+  - return a new Promise from main
+  - if simulateAsync executed successfully, the promise should resolve
+  - if simulateAsync fails, the promise should reject
 */
 
-/* doAsyncWork()
-  @returns {Promise}
+/* simulateAsync()
+  @param {function} [callback] - error-first callback
 */
 
 const main = () =>
-  doAsyncWork()
-    .then(handleSuccess)
-    .catch(handleError)
+  new Promise((resolve, reject) => {
+    simulateAsync((error, data) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve(data)
+      }
+    })
+  })
 
 module.exports = main

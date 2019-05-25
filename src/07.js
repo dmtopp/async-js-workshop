@@ -1,18 +1,25 @@
-const { simulateAsync } = require('./helpers/asyncFunctions')
+const { handleError, handleSuccess } = require('./helpers/handleResults')
+const { hackMainframePromise, getLaunchCodesPromise } = require('./helpers/asyncFunctions')
 
 /*
-  07 Wrapping callbacks in a promise
-  - simulateAsync still takes an error-first callback
-  - return a new Promise from main
-  - if simulateAsync executed successfully, the promise should resolve
-  - if simulateAsync fails, the promise should reject
+  07 Multiple promises with async/await
+  - hackMainframe and getLaunchCodes still return promises
+  - use async/await instead of .then()
+  - pass the results of hackMainframe into getLaunchCodes
+  - if there is an error, pass it to handleError()
+  - otherwise, pass the results to handleSuccess()
 */
 
-/* simulateAsync()
-  @param {function} [callback] - error-first callback
+/* hackMainframePromise()
+  @returns {Promise}
 */
 
-const main = () => {
+/* getLaunchCodesPromise()
+  @param {string} [credentials] - result from hackMainframe()
+  @returns {Promise}
+*/
+
+const main = async () => {
   // your code here
 }
 

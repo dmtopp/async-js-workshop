@@ -1,29 +1,44 @@
-const ex03 = require('../solutions/03')
+const ex03 = require('../03')
 const returnDataOrThrowError = require('../helpers/returnDataOrThrowError')
-const { handleError, handleSuccess } = require('../helpers/handleResults')
+// const { handleError, handleSuccess } = require('../helpers/handleResults')
 
 describe('ex03', () => {
-  it('handleError should be called if there is an error', () => {
-    const result = {
-      error: { message: 'Oh no!' },
-      data: null,
-    }
-    returnDataOrThrowError.mockReturnValueOnce(result)
-
-    ex03().then(() => {
-      expect(handleError).toHaveBeenCalledWith(result.error)
-    })
-  })
-
-  it('handleSuccess should be called if there was no error', () => {
-    const result = {
+  it('should return a promise', () => {
+    const success = {
       error: null,
       data: { message: 'Success!' },
     }
-    returnDataOrThrowError.mockReturnValueOnce(result)
+    returnDataOrThrowError.mockReturnValueOnce(success)
 
-    ex03().then(() => {
-      expect(handleSuccess).toHaveBeenCalledWith(result.data)
-    })
+    const result = ex03()
+
+    expect(result).toBeInstanceOf(Promise)
+  })
+
+  it('the promise should reject if an error occured', async () => {
+    const fail = {
+      error: { message: 'Oh no!' },
+      data: null,
+    }
+    returnDataOrThrowError.mockReturnValueOnce(fail)
+
+    try {
+      await ex03()
+      expect(true).toBe(false) // fail test if reject() not used
+    } catch (e) {
+      expect(e).toEqual(fail.error)
+    }
+  })
+
+  it('the promise should resolve if there was no error', async () => {
+    const success = {
+      error: null,
+      data: { message: 'Success!' },
+    }
+    returnDataOrThrowError.mockReturnValueOnce(success)
+
+    const result = await ex03()
+
+    expect(result).toEqual(success.data)
   })
 })
