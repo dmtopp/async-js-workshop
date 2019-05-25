@@ -1,6 +1,14 @@
 const { handleError, handleSuccess } = require('../helpers/handleResults')
 const { hackMainframe, getLaunchCodes } = require('../helpers/asyncFunctions')
 
+/*
+  02 Chaining error-first callbacks
+  - this exercise has two async functions: hackMainframe and getLaunchCodes
+  - getLaunchCodes takes the result of hackMainframe as its first argument
+  - if there is an error, pass it to handleError()
+  - otherwise, pass the results to handleSuccess()
+*/
+
 /* hackMainframe()
   @param {function} [callback] - error-first callback
 */
@@ -27,13 +35,6 @@ const hackMainframeCb = (error, credentials) => {
 }
 
 const main = () => {
-  /* In this exercise we'll be simulating a day at a secret CIA data center.
-  We'll need to do two async things: hack into the mainframe and then get
-  some launch codes. You'll need to use several error-first callbacks to
-  pass the results of one async function into the next.
-
-  Pass any errors to handleError(), and pass the final success message to handleSuccess() */
-
   hackMainframe(hackMainframeCb)
 }
 

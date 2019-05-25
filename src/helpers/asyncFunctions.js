@@ -41,12 +41,38 @@ const doAsyncWork = () =>
     })
   })
 
+const hackMainframePromise = () =>
+  new Promise((resolve, reject) => {
+    timeout(() => {
+      const { error, data } = getResults(CREDENTIALS)
+
+      if (error) {
+        reject(error)
+      } else {
+        resolve(data)
+      }
+    }, getRandomDelay())
+  })
+
+const getLaunchCodesPromise = credentials =>
+  new Promise((resolve, reject) => {
+    timeout(() => {
+      if (credentials === CREDENTIALS) {
+        resolve(LAUNCH_CODES)
+      } else {
+        // eslint-disable-next-line
+        reject({ message: 'Incorrect credentials!' })
+      }
+    })
+  })
 
 module.exports = {
   simulateAsync,
   hackMainframe,
   getLaunchCodes,
   doAsyncWork,
+  hackMainframePromise,
+  getLaunchCodesPromise,
   CREDENTIALS,
   LAUNCH_CODES,
 }

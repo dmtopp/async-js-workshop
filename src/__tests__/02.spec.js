@@ -1,4 +1,4 @@
-const ex02 = require('../solutions/02multipleErrorFirstCallbacks')
+const ex02 = require('../solutions/02')
 const returnDataOrThrowError = require('../helpers/returnDataOrThrowError')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
 const { CREDENTIALS, LAUNCH_CODES } = require('../helpers/asyncFunctions')

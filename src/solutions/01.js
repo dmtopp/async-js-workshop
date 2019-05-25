@@ -1,11 +1,18 @@
 const { simulateAsync } = require('../helpers/asyncFunctions')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
-// use these guys ^ to handle the async response
+
+/*
+  01 Intro to error-first callbacks
+  - write an error-first callback for this function
+  - if there is an error, pass it to handleError()
+  - otherwise, pass the results to handleSuccess()
+*/
+
+/* simulateAsync()
+  @param {function} [callback] - error-first callback
+*/
 
 const main = () => {
-  /* write an error-first callback for this function
-  if there is an error, pass it to handleError
-  otherwise, pass the results to handleSuccess */
   simulateAsync((error, data) => {
     if (error) {
       handleError(error)

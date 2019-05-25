@@ -1,8 +1,8 @@
-const ex01 = require('../solutions/01errorFirstCallbacks')
+const ex03 = require('../solutions/03')
 const returnDataOrThrowError = require('../helpers/returnDataOrThrowError')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
 
-describe('ex01', () => {
+describe('ex03', () => {
   it('handleError should be called if there is an error', () => {
     const result = {
       error: { message: 'Oh no!' },
@@ -10,9 +10,9 @@ describe('ex01', () => {
     }
     returnDataOrThrowError.mockReturnValueOnce(result)
 
-    ex01()
-
-    expect(handleError).toHaveBeenCalledWith(result.error)
+    ex03().then(() => {
+      expect(handleError).toHaveBeenCalledWith(result.error)
+    })
   })
 
   it('handleSuccess should be called if there was no error', () => {
@@ -22,8 +22,8 @@ describe('ex01', () => {
     }
     returnDataOrThrowError.mockReturnValueOnce(result)
 
-    ex01()
-
-    expect(handleSuccess).toHaveBeenCalledWith(result.data)
+    ex03().then(() => {
+      expect(handleSuccess).toHaveBeenCalledWith(result.data)
+    })
   })
 })

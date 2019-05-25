@@ -1,12 +1,19 @@
 {
-  "name": "js-boilerplate",
+  "name": "async-js-workshop",
   "version": "1.0.0",
-  "description": "Boilerplate for JS projects",
+  "description": "Async JS workshop for LI",
   "main": "index.js",
   "scripts": {
     "lint": "node ./node_modules/eslint/bin/eslint ./src",
     "test": "jest --config jest.json",
-    "test:dev": "jest --config jest.json --watch"
+    "test:dev": "jest --config jest.json --watch",
+    "01": "jest --config jest.json __tests__/01.spec.js",
+    "02": "jest --config jest.json __tests__/02.spec.js",
+    "03": "jest --config jest.json __tests__/03.spec.js",
+    "04": "jest --config jest.json __tests__/04.spec.js",
+    "05": "jest --config jest.json __tests__/05.spec.js",
+    "06": "jest --config jest.json __tests__/06.spec.js",
+    "07": "jest --config jest.json __tests__/07.spec.js"
   },
   "author": "DTopp",
   "license": "MIT",

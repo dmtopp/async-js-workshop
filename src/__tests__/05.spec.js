@@ -1,8 +1,8 @@
-const ex03 = require('../solutions/03promises')
+const ex05 = require('../solutions/05')
 const returnDataOrThrowError = require('../helpers/returnDataOrThrowError')
 const { handleError, handleSuccess } = require('../helpers/handleResults')
 
-describe('ex03', () => {
+describe('ex05', () => {
   it('handleError should be called if there is an error', () => {
     const result = {
       error: { message: 'Oh no!' },
@@ -10,7 +10,7 @@ describe('ex03', () => {
     }
     returnDataOrThrowError.mockReturnValueOnce(result)
 
-    ex03().then(() => {
+    ex05().then(() => {
       expect(handleError).toHaveBeenCalledWith(result.error)
     })
   })
@@ -22,7 +22,7 @@ describe('ex03', () => {
     }
     returnDataOrThrowError.mockReturnValueOnce(result)
 
-    ex03().then(() => {
+    ex05().then(() => {
       expect(handleSuccess).toHaveBeenCalledWith(result.data)
     })
   })
